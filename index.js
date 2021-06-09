@@ -66,7 +66,7 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 
 
 function is31Flavors(array){
-   return array.length = 31 ? true:false
+   return array.length === 31 ? true:false
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -82,8 +82,9 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(/*your code here*/){
-   /*your code here*/
+function addFlavor(array, flavor){
+   array.unshift(flavor)
+   return array 
 }
 
 
@@ -98,8 +99,9 @@ Use the removeLastFlavor function below to do the following:
     For example: running removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]
 */
 
-function removeLastFlavor(/*your code here*/){
-   /*your code here*/
+function removeLastFlavor(array){
+   array.pop()
+   return array
 }
 
 
@@ -115,8 +117,8 @@ Use the getFlavorByIndex function below to do the following:
     For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
 
-function getFlavorByIndex(/*your code here*/){
-    /*your code here*/
+function getFlavorByIndex(array, index){
+    return array[index]
 }
 
 
@@ -135,8 +137,15 @@ Use the removeFlavorByName function below to do the following:
     HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-    /*your code here*/
+function removeFlavorByName(array,str){
+    let newArray = [...array]
+    for (let i = 0; i < array.length; i++){
+        if (array[i] === (str)){
+           newArray.splice(i,1)
+           
+        }
+        
+    }return newArray
 }
 
 
@@ -185,8 +194,13 @@ Use the getAverageWordLength function below to do the following:
     For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-    /*code here*/
+function getAverageWordLength(array){
+    let total= 0
+    for (let i=0; i<array.length; i++){
+        total = total + i.length 
+    }
+    let average = total/ array.length
+    return average
 }
 
 
@@ -203,8 +217,24 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-    /*code here*/
+function getRandomFlavors(arr1, arr2, arr3, arr4){
+    
+    let randomNum = (array) => (Math.floor(Math.random() * array.length))
+    
+    let bigArray = [arr1, arr2, arr3, arr4]
+    let newArray = []
+    
+    for (const arr of bigArray ){
+        for (let n = randomNum(arr); arr.length >(arr.length-8); n = randomNum(arr)){
+            if (!(newArray.includes(arr[n]))){
+                bigArray.push(arr[n])
+            }
+        }
+    }
+    while (bigArray.length > 31){
+        bigArray = bigArray.shift();
+    }
+    return bigArray
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
@@ -287,7 +317,7 @@ const regionalFlavors = [
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"
 ]
-
+getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors )
 
 
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
